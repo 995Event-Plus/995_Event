@@ -1,0 +1,7 @@
+{
+  "name": "995 EVENTS",
+  "description": "Event management agency website featuring a portfolio, services overview, and AI-powered event consultancy.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

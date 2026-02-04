@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>995 EVENTS - Engine of Experience</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'bg-dark': '#0A0A0A',
+              'neon-cyan': '#00cfe5',
+              'neon-magenta': '#e80074',
+              'neon-purple': '#c200db',
+              'deep-blue': '#1d1856',
+            },
+            fontFamily: {
+              heading: ['Orbitron', 'sans-serif'],
+              subheading: ['IBM Plex Sans Thai', 'sans-serif'],
+              body: ['IBM Plex Sans Thai', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Global Styles -->
+    <style>
+      :root {
+        --bg-dark: #0A0A0A;
+        --neon-cyan: #00cfe5;
+        --neon-magenta: #e80074;
+        --glass-border: rgba(0, 207, 229, 0.2);
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: #E0E0E0;
+        overflow-x: hidden;
+      }
+
+      .neon-shadow-text-cyan {
+        text-shadow: 0 0 12px var(--neon-cyan), 0 0 25px rgba(0, 207, 229, 0.6);
+      }
+      
+      .neon-shadow-text-magenta {
+        text-shadow: 0 0 12px var(--neon-magenta), 0 0 25px rgba(232, 0, 116, 0.6);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px) saturate(1.2);
+        -webkit-backdrop-filter: blur(20px) saturate(1.2);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 1rem;
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+            0 4px 16px rgba(0, 0, 0, 0.25),
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            0 2px 8px rgba(0, 207, 229, 0.1);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                   box-shadow 0.3s ease, 
+                   backdrop-filter 0.3s ease;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 
+            inset 0 2px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            0 20px 60px rgba(0, 0, 0, 0.25),
+            0 6px 20px rgba(0, 207, 229, 0.4),
+            0 0 0 1px rgba(0, 207, 229, 0.2);
+      }
+
+      .glass-button {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        background: rgba(20, 20, 30, 0.4);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--neon-cyan);
+        color: var(--neon-cyan);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-button:hover, .glass-button.active {
+        background: var(--neon-cyan);
+        color: var(--bg-dark);
+        box-shadow: 0 0 30px var(--neon-cyan);
+      }
+
+      .magic-button {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        background: rgba(0, 207, 229, 0.15);
+        backdrop-filter: blur(8px);
+        border: 2px solid var(--neon-cyan);
+        color: var(--neon-cyan);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .magic-button::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -150%; width: 50%; height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
+        transform: skewX(-20deg);
+        transition: transform 0s;
+        z-index: 2;
+      }
+
+      .magic-button:hover {
+        background-color: var(--neon-cyan);
+        color: var(--bg-dark);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 0 40px var(--neon-cyan);
+      }
+
+      .magic-button:hover::before {
+        transform: skewX(-20deg) translateX(400%); 
+        transition: transform 1.2s ease-in-out;
+      }
+
+      .promo-magic-button {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        background-color: rgba(232, 0, 116, 0.7);
+        border: 1px solid var(--neon-magenta);
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px var(--neon-magenta);
+        animation: pulsating-neon 2s infinite alternate;
+      }
+
+      @keyframes pulsating-neon {
+        0% { box-shadow: 0 0 20px var(--neon-magenta); }
+        100% { box-shadow: 0 0 40px var(--neon-magenta); }
+      }
+
+      /* Simple Fade In Up Animation Utility */
+      .fade-in-up {
+        animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
